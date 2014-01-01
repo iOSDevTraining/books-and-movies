@@ -1,5 +1,5 @@
 //
-//  IDTViewController.h
+//  IDTDetailViewController.h
 //  MasterDetail
 //
 //  Created by Josh Brown on 12/17/13.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IDTViewController : UITableViewController
+@interface IDTDetailViewController : UIViewController
+
+@property NSDictionary *entry;
 
 @end

@@ -21,6 +21,7 @@
 		03FFDB5A1860F602002C3D53 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FFDB3C1860F602002C3D53 /* UIKit.framework */; };
 		03FFDB621860F602002C3D53 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03FFDB601860F602002C3D53 /* InfoPlist.strings */; };
 		03FFDB641860F602002C3D53 /* MasterDetailTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FFDB631860F602002C3D53 /* MasterDetailTests.m */; };
+		03FFDB6F18610581002C3D53 /* IDTDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FFDB6E18610581002C3D53 /* IDTDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		03FFDB5F1860F602002C3D53 /* MasterDetailTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MasterDetailTests-Info.plist"; sourceTree = "<group>"; };
 		03FFDB611860F602002C3D53 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		03FFDB631860F602002C3D53 /* MasterDetailTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterDetailTests.m; sourceTree = "<group>"; };
+		03FFDB6D18610581002C3D53 /* IDTDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDTDetailViewController.h; sourceTree = "<group>"; };
+		03FFDB6E18610581002C3D53 /* IDTDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDTDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,8 @@
 				03FFDB4A1860F602002C3D53 /* Main.storyboard */,
 				03FFDB4D1860F602002C3D53 /* IDTViewController.h */,
 				03FFDB4E1860F602002C3D53 /* IDTViewController.m */,
+				03FFDB6D18610581002C3D53 /* IDTDetailViewController.h */,
+				03FFDB6E18610581002C3D53 /* IDTDetailViewController.m */,
 				03FFDB501860F602002C3D53 /* Images.xcassets */,
 				03FFDB3F1860F602002C3D53 /* Supporting Files */,
 			);
@@ -253,6 +258,7 @@
 				03FFDB491860F602002C3D53 /* IDTAppDelegate.m in Sources */,
 				03FFDB4F1860F602002C3D53 /* IDTViewController.m in Sources */,
 				03FFDB451860F602002C3D53 /* main.m in Sources */,
+				03FFDB6F18610581002C3D53 /* IDTDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
