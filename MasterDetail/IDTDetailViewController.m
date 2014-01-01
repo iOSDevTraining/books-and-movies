@@ -12,6 +12,7 @@
 
 @property IBOutlet UIImageView *imageView;
 @property IBOutlet UILabel *titleLabel;
+@property IBOutlet UILabel *genreLabel;
 @property IBOutlet UILabel *summaryLabel;
 
 @end
@@ -32,6 +33,7 @@
     [super viewDidLoad];
     
     self.titleLabel.text = [self.entry valueForKeyPath:@"im:name.label"];
+    self.genreLabel.text = [self.entry valueForKeyPath:@"category.attributes.label"];
     self.summaryLabel.text = [self.entry valueForKeyPath:@"summary.label"];
     
     NSString *urlString = [[[self.entry valueForKeyPath:@"im:image"] lastObject] valueForKey:@"label"];

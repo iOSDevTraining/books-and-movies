@@ -27,8 +27,14 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Summary" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="152" translatesAutoresizingMaskIntoConstraints="NO" id="CZa-KF-EUZ">
-                                <rect key="frame" x="148" y="103" width="152" height="141"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Summary" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="CZa-KF-EUZ">
+                                <rect key="frame" x="20" y="252" width="280" height="296"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Genre" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAI-BB-IuL">
+                                <rect key="frame" x="148" y="103" width="152" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -38,6 +44,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Zad-iR-uYA"/>
                     <connections>
+                        <outlet property="genreLabel" destination="XAI-BB-IuL" id="axB-D4-XZD"/>
                         <outlet property="imageView" destination="fSE-yz-UbT" id="Wbt-Lj-1P9"/>
                         <outlet property="summaryLabel" destination="CZa-KF-EUZ" id="GXc-65-DKf"/>
                         <outlet property="titleLabel" destination="9dy-cA-Hah" id="c9p-rb-kGv"/>
