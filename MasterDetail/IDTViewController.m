@@ -46,13 +46,12 @@
 - (void)loadFromURL:(NSString *)urlString;
 {
     NSURL *url = [NSURL URLWithString:urlString];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
     
     NSURLSessionDataTask *dataTask =
-    [session dataTaskWithRequest:request
+    [session dataTaskWithURL:url
                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
      {
          NSError *jsonError = nil;
