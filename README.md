@@ -5,8 +5,17 @@ A simple master-detail app that pulls books and movies from a JSON feed, lists t
 
 ![Main view](Main screen.png)
 
+## Getting started
 
-## Technologies
+1. Clone the repo
+2. Double-click on MasterDetail.xcodeproj to open the project in Xcode
+3. Run the app with ⌘R (Command-R). Or if you like clicking things, the big "play" button in the upper left of Xcode.
+4. Look at Main.storyboard to see how the app is laid out visually.
+5. Look at IDTViewController to see the networking and table view code.
+6. Look at IDTDetailViewController to see where the text and image come from for the labels and image view on the detail screen.
+
+
+## Explanation of Technologies Used
 
 Most of the apps you build will use UIKit, which is the built-in widget library for iOS. Additionally, if you do any sort of networking in an app, you'll likely be using NSURLSession. And if that networking is pulling JSON from a server (or sending JSON *to* a server), you'll probably use NSJSONSerialization. From UIKit to NSURLSession to NSJSONSerialization, you can't go wrong with [books-and-movies](https://github.com/iOSDevTraining/books-and-movies). :)
 
