@@ -1,15 +1,9 @@
 books-and-movies
 ================
 
-A simple app that pulls books and movies from a JSON feed, lists them in a table view, and shows a lil' detail about them.
-
-## Master
-
 ![Main view](Main screen.png)
 
-## Detail
-
-![Detail view](Detail screen.png)
+A simple app that pulls books and movies from a JSON feed, lists them in a table view, and shows a lil' detail about them.
 
 ## Technologies
 
@@ -17,9 +11,13 @@ This app uses a variety of technologies you'll use in almost any app you build (
 
 ### UIKit
 
-The Master view (see screen shot above) uses a two key elements of UIKit: UITableView and UISegmentedControl. UITableView is used in tons of apps on the App Store, plus many of Apple's built-in apps, like Mail, Contacts, and Settings. And UISegmentedControl (that blue control that says "Movies" and "Books" in the top of the master screen shot above) is used almost as frequently. It can be seen in apps like Maps (hit the info button to see Standard | Hybrid | Satellite in a segmented control) and Safari (on the Bookmarks screen, it's the Bookmarks | Reading List control at the top).
+![Main view](Main screen.png)
 
-The Detail view (screen shot above) shows examples of UIImageView and UILabel, both part of UIKit. The UIImageView is the view that displays the book/movie cover art. All of the text elements on the detail screen are UILabels.
+**The Master view** uses two key elements of UIKit: UITableView and UISegmentedControl. UITableView is used in tons of apps on the App Store, plus many of Apple's built-in apps, like Mail, Contacts, and Settings. And UISegmentedControl (that blue control that says "Movies" and "Books" in the top of the master screen shot above) is used almost as frequently. It can be seen in apps like Maps (hit the info button to see Standard | Hybrid | Satellite in a segmented control) and Safari (on the Bookmarks screen, it's the Bookmarks | Reading List control at the top).
+
+![Detail view](Detail screen.png)
+
+**The Detail view** shows examples of UIImageView and UILabel, both part of UIKit. The UIImageView is the view that displays the book/movie cover art. All of the text elements on the detail screen are UILabels.
 
 Basically everything that starts with "UI" is part of UIKit, so that makes it easy to remember what's in UIKit and what's not.
 
