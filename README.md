@@ -1,7 +1,7 @@
 books-and-movies
 ================
 
-A simple master-detail app that pulls books and movies from a JSON feed, lists them in a table view, and shows a lil' detail about them. Built for those who are new to iOS, it uses a few key technologies that you'll use in almost any app you build.
+books-and-movies is a simple master-detail app that pulls books and movies from a JSON feed, lists them in a table view, and shows a lil' detail about them. If you're new to iOS, read all the way through this README where you'll learn about a few key technologies you'll use in almost any app you build. And definitely clone and run the app to see it for yourself.
 
 ![Main view](Main screen.png)
 
@@ -43,3 +43,13 @@ JSON serialization in iOS is really quite simple thanks to NSJSONSerialization w
 ## A note on the JSON data
 
 The data from this app comes from Apple's [iTunes RSS Feeds](https://rss.itunes.apple.com/us/), where you can generate feed URLs for a variety of media types on iTunes. In this app, we've taken the generated RSS Feed URL and replaced the "xml" at the end with "json" and found that that little hack works nicely to give us the data we want as JSON. Here's a URL for the Top Paid Books: https://itunes.apple.com/us/rss/toppaidebooks/limit=10/json
+
+## Issues, Suggestions, Comments, or Questions?
+
+If you have issues, you can file them in this repository's [issue tracker](https://github.com/iosdevtraining/books-and-movies/issues). Otherwise, you can send suggestions, comments, or questions to [@iOSDevTraining](https://twitter.com/iosdevtraining) or [iOSDevTraining@roadfiresoftware.com](mailto:iOSDevTraining@roadfiresoftware.com).
+
+## About
+
+This was made just for you by [Josh Brown](https://twitter.com/jtbrown) and [Randy Edmonds](https://twitter.com/apphands). We teach workshops on iOS - find out more at [iOSDevTraining.com](http://iosdevtraining.com/).
+
+You should definitely [follow us on Twitter](https://twitter.com/iosdevtraining).
