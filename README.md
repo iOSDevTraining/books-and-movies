@@ -1,14 +1,14 @@
 books-and-movies
 ================
 
-A simple app that pulls books and movies from a JSON feed, lists them in a table view, and shows a lil' detail about them.
+A simple master-detail app that pulls books and movies from a JSON feed, lists them in a table view, and shows a lil' detail about them. Built for those who are new to iOS, it uses a few key technologies that you'll use in almost any app you build.
 
 ![Main view](Main screen.png)
 
 
 ## Technologies
 
-This app uses a variety of technologies you'll use in almost any app you build (you know, assuming your app does networking and has some sort of UI ;). From UIKit to NSURLSession to NSJSONSerialization, you can't go wrong with [books-and-movies](https://github.com/iOSDevTraining/books-and-movies). :)
+Most of the apps you build will use UIKit, which is the built-in widget library for iOS. Additionally, if you do any sort of networking in an app, you'll likely be using NSURLSession. And if that networking is pulling JSON from a server (or sending JSON *to* a server), you'll probably use NSJSONSerialization. From UIKit to NSURLSession to NSJSONSerialization, you can't go wrong with [books-and-movies](https://github.com/iOSDevTraining/books-and-movies). :)
 
 ### UIKit
 
