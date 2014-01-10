@@ -1,7 +1,7 @@
 books-and-movies
 ================
 
-books-and-movies is a simple master-detail app that pulls books and movies from a JSON feed, lists them in a table view, and shows a lil' detail about them. If you're new to iOS, read all the way through this README where you'll learn about a few key technologies you'll use in almost any app you build. And definitely clone and run the app to see it for yourself.
+books-and-movies is a simple master-detail app that pulls books and movies from a JSON feed, lists them in a table view, and shows a lil' detail about them. If you're new to iOS, you can learn about a few key technologies you'll use in almost any app you build by reading through this README. And you should definitely clone this repo and run the app to see it for yourself.
 
 ![Main view](Main screen.png)
 
@@ -9,7 +9,7 @@ books-and-movies is a simple master-detail app that pulls books and movies from 
 
 1. Clone the repo
 2. Double-click on MasterDetail.xcodeproj to open the project in Xcode
-3. Run the app with ⌘R (Command-R). Or if you like clicking things, the big "play" button in the upper left of Xcode.
+3. Run the app with ⌘R (Command-R). Or if you like clicking things, click the big "play" button in the upper left corner of Xcode.
 4. Look at Main.storyboard to see how the app is laid out visually.
 5. Look at IDTViewController to see the networking and table view code.
 6. Look at IDTDetailViewController to see where the text and image come from for the labels and image view on the detail screen.
@@ -17,11 +17,11 @@ books-and-movies is a simple master-detail app that pulls books and movies from 
 
 ## Explanation of Technologies Used
 
-Most of the apps you build will use UIKit, which is the built-in widget library for iOS. Additionally, if you do any sort of networking in an app, you'll likely be using NSURLSession. And if that networking is pulling JSON from a server (or sending JSON *to* a server), you'll probably use NSJSONSerialization. From UIKit to NSURLSession to NSJSONSerialization, you can't go wrong with [books-and-movies](https://github.com/iOSDevTraining/books-and-movies). :)
+Most of the apps you build will use UIKit, which is the built-in UI library for iOS. Additionally, if you do any sort of networking in an app, you'll likely be using NSURLSession. And if that networking is pulling JSON from a server (or sending JSON *to* a server), you'll probably use NSJSONSerialization. From UIKit to NSURLSession to NSJSONSerialization, you can't go wrong with [books-and-movies](https://github.com/iOSDevTraining/books-and-movies). :)
 
 ### UIKit
 
-As Apple describes it, UIKit is "the primary API for implementing the user interface in an iOS app." Below are screen shots of the two screens in the app, which UIKit elements make them up, and an explanation of what you're seeing.
+As Apple describes it, UIKit is "the primary API for implementing the user interface in an iOS app." Below are screen shots of the two screens in the app and explanations of the UIKit elements that make them up.
 
 ![Main view](Main screen.png)
 
@@ -29,12 +29,12 @@ As Apple describes it, UIKit is "the primary API for implementing the user inter
 
 ![Detail view](Detail screen.png)
 
-**The Detail view** shows examples of UIImageView and UILabel, both part of UIKit. The UIImageView is the view that displays the book/movie cover art. All of the text elements on the detail screen are UILabels.
+**The Detail view** (pictured above) shows examples of UIImageView and UILabel, both part of UIKit. The UIImageView is the view that displays the book/movie cover art. All of the text elements on the detail screen are UILabels.
 
 
 ### NSURLSession
 
-The data for the table view is fetched with the help of NSURLSession, which is a wonderful new class in iOS 7 that makes HTTP requests so much nicer than with NSURLConnection, its nasty predecessor. (It's only nasty *now* because we have NSURLSession - note that it wasn't all that awful before we knew any better.) See IDTViewController for more on how to make HTTP requests with NSURLSession.
+The data for the table view is fetched with the help of NSURLSession, which is a wonderful new class in iOS 7 that makes HTTP requests so much nicer than with NSURLConnection, its nasty predecessor. (It's actually only nasty *now* because we have NSURLSession - note that it wasn't all that awful before we knew any better.) See IDTViewController for more on how to make HTTP requests with NSURLSession.
 
 ### NSJSONSerialization
 
