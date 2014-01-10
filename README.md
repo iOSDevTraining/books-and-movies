@@ -21,15 +21,16 @@ Most of the apps you build will use UIKit, which is the built-in widget library 
 
 ### UIKit
 
+As Apple describes it, UIKit is "the primary API for implementing the user interface in an iOS app." Below are screen shots of the two screens in the app, which UIKit elements make them up, and an explanation of what you're seeing.
+
 ![Main view](Main screen.png)
 
-**The Master view** uses two key elements of UIKit: UITableView and UISegmentedControl. UITableView is used in tons of apps on the App Store, plus many of Apple's built-in apps, like Mail, Contacts, and Settings. And UISegmentedControl (that blue control that says "Movies" and "Books" in the top of the master screen shot above) is used almost as frequently. It can be seen in apps like Maps (hit the info button to see Standard | Hybrid | Satellite in a segmented control) and Safari (on the Bookmarks screen, it's the Bookmarks | Reading List control at the top).
+**The Master view** (pictured above) uses two key elements of UIKit: UITableView and UISegmentedControl. UITableView is used in tons of apps on the App Store, plus many of Apple's built-in apps, like Mail, Contacts, and Settings. And UISegmentedControl (that blue control that says "Movies" and "Books" in the top of the master screen shot above) is used almost as frequently. It can be seen in apps like Maps (hit the info button to see Standard | Hybrid | Satellite in a segmented control) and Safari (on the Bookmarks screen, it's the Bookmarks | Reading List control at the top).
 
 ![Detail view](Detail screen.png)
 
 **The Detail view** shows examples of UIImageView and UILabel, both part of UIKit. The UIImageView is the view that displays the book/movie cover art. All of the text elements on the detail screen are UILabels.
 
-Basically everything that starts with "UI" is part of UIKit, so that makes it easy to remember what's in UIKit and what's not.
 
 ### NSURLSession
 
@@ -38,3 +39,7 @@ The data for the table view is fetched with the help of NSURLSession, which is a
 ### NSJSONSerialization
 
 JSON serialization in iOS is really quite simple thanks to NSJSONSerialization which turns plain ol' JSON into instances of NSDictionary, NSArray, NSString, NSNumber, and everybody's favorite: NSNull. The example here shows that, but NSJSONSerialization can also go the other way, turning your NSDictionary, NSArray, NSString, NSNumber, and NSNull objects into a lovely chunk of UTF-8 encoded data (NSData).
+
+## A note on the JSON data
+
+The data from this app comes from Apple's [iTunes RSS Feeds](https://rss.itunes.apple.com/us/), where you can generate feed URLs for a variety of media types on iTunes. In this app, we've taken the generated RSS Feed URL and replaced the "xml" at the end with "json" and found that that little hack works nicely to give us the data we want as JSON. Here's a URL for the Top Paid Books: https://itunes.apple.com/us/rss/toppaidebooks/limit=10/json
