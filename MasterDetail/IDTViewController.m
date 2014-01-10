@@ -9,6 +9,12 @@
 #import "IDTViewController.h"
 #import "IDTDetailViewController.h"
 
+#define kMoviesSegment 0
+#define kBooksSegment 1
+
+#define kMoviesURL  @"https://itunes.apple.com/us/rss/topmovies/limit=15/json"
+#define kBooksURL @"https://itunes.apple.com/us/rss/toppaidebooks/limit=15/json"
+
 @interface IDTViewController ()
 
 @property NSArray *entries;
@@ -34,7 +40,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    NSURL *url = [NSURL URLWithString:@"https://itunes.apple.com/us/rss/topmovies/limit=10/genre=4401/json"];
+    [self loadFromURL:kMoviesURL];
+}
+
+- (void)loadFromURL:(NSString *)urlString;
+{
+    NSURL *url = [NSURL URLWithString:urlString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -55,6 +66,19 @@
     [dataTask resume];
 }
 
+- (IBAction)didChangeSegment:(id)sender
+{
+    UISegmentedControl *control = (UISegmentedControl *)sender;
+
+    if (control.selectedSegmentIndex == kMoviesSegment)
+    {
+        [self loadFromURL:kMoviesURL];
+    }
+    else if (control.selectedSegmentIndex == kBooksSegment)
+    {
+        [self loadFromURL:kBooksURL];
+    }
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

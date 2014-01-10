@@ -12,6 +12,7 @@
 
 @property IBOutlet UIImageView *imageView;
 @property IBOutlet UILabel *titleLabel;
+@property IBOutlet UILabel *nameLabel;
 @property IBOutlet UILabel *genreLabel;
 @property IBOutlet UILabel *summaryLabel;
 
@@ -33,18 +34,18 @@
     [super viewDidLoad];
     
     self.titleLabel.text = [self.entry valueForKeyPath:@"im:name.label"];
+    self.nameLabel.text = [self.entry valueForKeyPath:@"im:artist.label"];
     self.genreLabel.text = [self.entry valueForKeyPath:@"category.attributes.label"];
     self.summaryLabel.text = [self.entry valueForKeyPath:@"summary.label"];
     
     NSString *urlString = [[[self.entry valueForKeyPath:@"im:image"] lastObject] valueForKey:@"label"];
     NSURL *url = [NSURL URLWithString:urlString];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
     
     NSURLSessionDataTask *dataTask =
-    [session dataTaskWithRequest:request
+    [session dataTaskWithURL:url
                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
      {
          dispatch_async(dispatch_get_main_queue(), ^{
