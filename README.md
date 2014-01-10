@@ -1,9 +1,10 @@
 books-and-movies
 ================
 
+A simple app that pulls books and movies from a JSON feed, lists them in a table view, and shows a lil' detail about them.
+
 ![Main view](Main screen.png)
 
-A simple app that pulls books and movies from a JSON feed, lists them in a table view, and shows a lil' detail about them.
 
 ## Technologies
 
