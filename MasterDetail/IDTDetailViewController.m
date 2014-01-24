@@ -10,11 +10,13 @@
 
 @interface IDTDetailViewController ()
 
-@property IBOutlet UIImageView *imageView;
-@property IBOutlet UILabel *titleLabel;
-@property IBOutlet UILabel *nameLabel;
-@property IBOutlet UILabel *genreLabel;
-@property IBOutlet UILabel *summaryLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *imageView;
+@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (nonatomic, weak) IBOutlet UILabel *nameLabel;
+@property (nonatomic, weak) IBOutlet UILabel *genreLabel;
+@property (nonatomic, weak) IBOutlet UILabel *summaryLabel;
+
+@property (nonatomic, strong) NSURLSession *urlSession;
 
 @end
 
@@ -42,18 +44,36 @@
     NSURL *url = [NSURL URLWithString:urlString];
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
     
-    NSURLSessionDataTask *dataTask =
-    [session dataTaskWithURL:url
-               completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
-     {
-         dispatch_async(dispatch_get_main_queue(), ^{
-             self.imageView.image = [UIImage imageWithData:data];
-         });
-     }];
+    if (!self.urlSession) {
+        
+        self.urlSession = [NSURLSession sessionWithConfiguration:configuration];
+    }
+    
+    __weak typeof(self) weakSelf = self;
+    
+    NSURLSessionDataTask *dataTask = [self.urlSession dataTaskWithURL:url
+                                                    completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+                                      {
+                                          dispatch_async(dispatch_get_main_queue(), ^{
+                                              
+                                              __strong typeof(self) strongSelf = weakSelf;
+                                              
+                                              strongSelf.imageView.image = [UIImage imageWithData:data];
+                                          });
+                                      }];
     
     [dataTask resume];
+}
+
+- (void)dealloc {
+    
+    /*
+     * NSURLSessions should be deallocated when they are no longer
+     * used.
+     * see: https://github.com/AFNetworking/AFNetworking/issues/1528
+     */
+    [self.urlSession invalidateAndCancel];
 }
 
 - (void)didReceiveMemoryWarning

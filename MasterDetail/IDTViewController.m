@@ -17,7 +17,9 @@
 
 @interface IDTViewController ()
 
-@property NSArray *entries;
+@property (nonatomic, copy) NSArray *entries;
+
+@property (nonatomic, strong) NSURLSession *urlSession;
 
 @end
 
@@ -59,24 +61,46 @@
     self.tableView.separatorStyle = separatorStyle;
 }
 
+- (void)dealloc {
+    
+    /*
+     * NSURLSessions should be deallocated when they are no longer
+     * used.
+     * see: https://github.com/AFNetworking/AFNetworking/issues/1528
+     */
+    [self.urlSession invalidateAndCancel];
+}
+
 - (void)loadFromURL:(NSString *)urlString;
 {
     NSURL *url = [NSURL URLWithString:urlString];
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
     
-    NSURLSessionDataTask *dataTask =
-    [session dataTaskWithURL:url
-               completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
-     {
-         NSError *jsonError = nil;
-         id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
-         
-         NSDictionary *feed = [json objectForKey:@"feed"];
-         self.entries = [feed objectForKey:@"entry"];
-         [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-     }];
+    if (!self.urlSession) {
+        
+        self.urlSession = [NSURLSession sessionWithConfiguration:configuration];
+    }
+    
+    __weak typeof(self) weakSelf = self;
+    
+    NSURLSessionDataTask *dataTask = [self.urlSession dataTaskWithURL:url
+                                                    completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+                                      {
+                                          __strong typeof(self) strongSelf = weakSelf;
+                                          
+                                          NSError *jsonError = nil;
+                                          id json = [NSJSONSerialization JSONObjectWithData:data
+                                                                                    options:0
+                                                                                      error:&jsonError];
+                                          
+                                          NSDictionary *feed = [json objectForKey:@"feed"];
+                                          strongSelf.entries = [feed objectForKey:@"entry"];
+                                          
+                                          [strongSelf.tableView performSelectorOnMainThread:@selector(reloadData)
+                                                                                 withObject:nil
+                                                                              waitUntilDone:NO];
+                                      }];
     
     [dataTask resume];
 }
