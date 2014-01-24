@@ -75,10 +75,10 @@
 {
     NSURL *url = [NSURL URLWithString:urlString];
     
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    
     if (!self.urlSession) {
-        
+
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    
         self.urlSession = [NSURLSession sessionWithConfiguration:configuration];
     }
     
@@ -131,7 +131,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CELL" forIndexPath:indexPath];
+    static NSString *cellIdentifier = @"CELL";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
     NSDictionary *entry = [self.entries objectAtIndex:indexPath.row];
     cell.textLabel.text = [entry valueForKeyPath:@"im:name.label"];

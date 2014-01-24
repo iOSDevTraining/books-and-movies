@@ -43,10 +43,10 @@
     NSString *urlString = [[[self.entry valueForKeyPath:@"im:image"] lastObject] valueForKey:@"label"];
     NSURL *url = [NSURL URLWithString:urlString];
     
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    
     if (!self.urlSession) {
         
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+
         self.urlSession = [NSURLSession sessionWithConfiguration:configuration];
     }
     
