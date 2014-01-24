@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 iOS Dev Training. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @interface IDTDetailViewController : UIViewController
 
 @property NSDictionary *entry;

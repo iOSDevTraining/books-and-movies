@@ -17,7 +17,9 @@
 
 @interface IDTViewController ()
 
-@property NSArray *entries;
+@property (nonatomic, copy) NSArray *entries;
+
+@property (nonatomic, strong) NSURLSession *urlSession;
 
 @end
 
@@ -43,24 +45,62 @@
     [self loadFromURL:kMoviesURL];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    /*
+     * Fix for Apple's iOS7 bug where, if you push the detail controller
+     * go to landscape and return to this controller, the separators
+     * are not correctly displayed. Reproducible in the Mail app in iOS 7.0.4.
+     *
+     * see: http://stackoverflow.com/a/19390930/764822
+     */
+    UITableViewCellSeparatorStyle separatorStyle = self.tableView.separatorStyle;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.separatorStyle = separatorStyle;
+}
+
+- (void)dealloc {
+    
+    /*
+     * NSURLSessions should be deallocated when they are no longer
+     * used.
+     * see: https://github.com/AFNetworking/AFNetworking/issues/1528
+     */
+    [self.urlSession invalidateAndCancel];
+}
+
 - (void)loadFromURL:(NSString *)urlString;
 {
     NSURL *url = [NSURL URLWithString:urlString];
     
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
+    if (!self.urlSession) {
+
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     
-    NSURLSessionDataTask *dataTask =
-    [session dataTaskWithURL:url
-               completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
-     {
-         NSError *jsonError = nil;
-         id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
-         
-         NSDictionary *feed = [json objectForKey:@"feed"];
-         self.entries = [feed objectForKey:@"entry"];
-         [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-     }];
+        self.urlSession = [NSURLSession sessionWithConfiguration:configuration];
+    }
+    
+    __weak typeof(self) weakSelf = self;
+    
+    NSURLSessionDataTask *dataTask = [self.urlSession dataTaskWithURL:url
+                                                    completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+                                      {
+                                          __strong typeof(self) strongSelf = weakSelf;
+                                          
+                                          NSError *jsonError = nil;
+                                          id json = [NSJSONSerialization JSONObjectWithData:data
+                                                                                    options:0
+                                                                                      error:&jsonError];
+                                          
+                                          NSDictionary *feed = [json objectForKey:@"feed"];
+                                          strongSelf.entries = [feed objectForKey:@"entry"];
+                                          
+                                          [strongSelf.tableView performSelectorOnMainThread:@selector(reloadData)
+                                                                                 withObject:nil
+                                                                              waitUntilDone:NO];
+                                      }];
     
     [dataTask resume];
 }
@@ -91,7 +131,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CELL" forIndexPath:indexPath];
+    static NSString *cellIdentifier = @"CELL";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
     NSDictionary *entry = [self.entries objectAtIndex:indexPath.row];
     cell.textLabel.text = [entry valueForKeyPath:@"im:name.label"];
