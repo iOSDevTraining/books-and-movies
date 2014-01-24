@@ -43,6 +43,22 @@
     [self loadFromURL:kMoviesURL];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    /*
+     * Fix for Apple's iOS7 bug where, if you push the detail controller
+     * go to landscape and return to this controller, the separators
+     * are not correctly displayed. Reproducible in the Mail app in iOS 7.0.4.
+     *
+     * see: http://stackoverflow.com/a/19390930/764822
+     */
+    UITableViewCellSeparatorStyle separatorStyle = self.tableView.separatorStyle;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.separatorStyle = separatorStyle;
+}
+
 - (void)loadFromURL:(NSString *)urlString;
 {
     NSURL *url = [NSURL URLWithString:urlString];
