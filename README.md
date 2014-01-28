@@ -3,6 +3,8 @@ books-and-movies
 
 books-and-movies is a simple master-detail app that pulls books and movies from a JSON feed, lists them in a table view, and shows a lil' detail about them. If you're new to iOS, you can learn about a few key technologies you'll use in almost any app you build by reading through this README. And you should definitely clone this repo and run the app to see it for yourself.
 
+This is the sample code for the [iOS Dev Training workshop](http://iosdevtraining.com/) we teach. In the class, you get to build this app along with us, plus you have the opportunity to ask questions and get your issues resolved. If you want more resources like this so you can learn to build apps, you can [join our mailing list](http://eepurl.com/IRZF1).
+
 ![Main view](Main screen.png)
 
 ## Getting started
@@ -50,6 +52,6 @@ If you have issues, you can file them in this repository's [issue tracker](https
 
 ## About
 
-This was made just for you by [Josh Brown](https://twitter.com/jtbrown) and [Randy Edmonds](https://twitter.com/apphands). We [teach workshops on iOS](http://iosdevtraining.com/) - [join our mailing list](http://eepurl.com/IRZF1) to get free resources like this and be the first to find out about upcoming classes.
+This was made just for you by [Josh Brown](https://twitter.com/jtbrown) and [Randy Edmonds](https://twitter.com/apphands). We [teach workshops on iOS](http://iosdevtraining.com/) - you can [join our mailing list](http://eepurl.com/IRZF1) to get free resources like this and be the first to find out about upcoming classes.
 
 You should definitely [follow us on Twitter](https://twitter.com/iosdevtraining).
