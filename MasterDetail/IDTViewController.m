@@ -17,7 +17,7 @@
 
 @interface IDTViewController ()
 
-@property NSArray *entries;
+@property (nonatomic, copy) NSArray *entries;
 
 @end
 
@@ -43,6 +43,21 @@
     [self loadFromURL:kMoviesURL];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    /*
+     * Fix for Apple's iOS7 bug where, if you push the detail controller
+     * go to landscape and return to this controller, the separators
+     * are not correctly displayed. Reproducible in the Mail app in iOS 7.0.4.
+     *
+     * see: http://stackoverflow.com/a/19390930/764822
+     */
+    UITableViewCellSeparatorStyle separatorStyle = self.tableView.separatorStyle;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.separatorStyle = separatorStyle;
+}
 - (void)loadFromURL:(NSString *)urlString;
 {
     NSURL *url = [NSURL URLWithString:urlString];
@@ -91,7 +106,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CELL" forIndexPath:indexPath];
+    static NSString *cellIdentifier = @"CELL";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
     NSDictionary *entry = [self.entries objectAtIndex:indexPath.row];
     cell.textLabel.text = [entry valueForKeyPath:@"im:name.label"];
