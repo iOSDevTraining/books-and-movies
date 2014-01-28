@@ -10,11 +10,11 @@
 
 @interface IDTDetailViewController ()
 
-@property IBOutlet UIImageView *imageView;
-@property IBOutlet UILabel *titleLabel;
-@property IBOutlet UILabel *nameLabel;
-@property IBOutlet UILabel *genreLabel;
-@property IBOutlet UILabel *summaryLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *imageView;
+@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (nonatomic, weak) IBOutlet UILabel *nameLabel;
+@property (nonatomic, weak) IBOutlet UILabel *genreLabel;
+@property (nonatomic, weak) IBOutlet UILabel *summaryLabel;
 
 @end
 
