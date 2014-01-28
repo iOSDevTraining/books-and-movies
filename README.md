@@ -50,6 +50,6 @@ If you have issues, you can file them in this repository's [issue tracker](https
 
 ## About
 
-This was made just for you by [Josh Brown](https://twitter.com/jtbrown) and [Randy Edmonds](https://twitter.com/apphands). We teach workshops on iOS - find out more at [iOSDevTraining.com](http://iosdevtraining.com/).
+This was made just for you by [Josh Brown](https://twitter.com/jtbrown) and [Randy Edmonds](https://twitter.com/apphands). We [teach workshops on iOS](http://iosdevtraining.com/) - [join our mailing list](http://eepurl.com/IRZF1) to get free resources like this and be the first to find out about upcoming classes.
 
 You should definitely [follow us on Twitter](https://twitter.com/iosdevtraining).
