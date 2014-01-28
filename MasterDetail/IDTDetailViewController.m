@@ -16,6 +16,8 @@
 @property IBOutlet UILabel *genreLabel;
 @property IBOutlet UILabel *summaryLabel;
 
+@property (nonatomic, strong) NSURLSession *urlSession;
+
 @end
 
 @implementation IDTDetailViewController
@@ -41,19 +43,37 @@
     NSString *urlString = [[[self.entry valueForKeyPath:@"im:image"] lastObject] valueForKey:@"label"];
     NSURL *url = [NSURL URLWithString:urlString];
     
+    if (!self.urlSession) {
+        
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
     
-    NSURLSessionDataTask *dataTask =
-    [session dataTaskWithURL:url
+        self.urlSession = [NSURLSession sessionWithConfiguration:configuration];
+    }
+    
+    __weak typeof(self) weakSelf = self;
+    
+    NSURLSessionDataTask *dataTask = [self.urlSession dataTaskWithURL:url
                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
      {
          dispatch_async(dispatch_get_main_queue(), ^{
-             self.imageView.image = [UIImage imageWithData:data];
+                                              
+                                              __strong typeof(self) strongSelf = weakSelf;
+                                              
+                                              strongSelf.imageView.image = [UIImage imageWithData:data];
          });
      }];
     
     [dataTask resume];
+}
+
+- (void)dealloc {
+    
+    /*
+     * NSURLSessions should be deallocated when they are no longer
+     * used.
+     * see: https://github.com/AFNetworking/AFNetworking/issues/1528
+     */
+    [self.urlSession invalidateAndCancel];
 }
 
 - (void)didReceiveMemoryWarning
