@@ -59,7 +59,10 @@
          
          NSDictionary *feed = [json objectForKey:@"feed"];
          self.entries = [feed objectForKey:@"entry"];
-         [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+         
+         dispatch_async(dispatch_get_main_queue(), ^{
+             [self.tableView reloadData];
+         });
      }];
     
     [dataTask resume];
